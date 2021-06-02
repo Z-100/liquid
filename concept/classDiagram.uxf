@@ -1,0 +1,198 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram note</help_text><element><id>UMLClass</id><coordinates><x>240</x><y>140</y><w>210</w><h>420</h></coordinates><panel_attributes>&lt;&lt;User&gt;&gt;
+
+--
+- String uuid
+- String username
+- String displayName
+- String password
+- Blob pfp
+
+--
++ user()
+
++ saveUser()
++ register();
++ setDisplayName()
++ setPassword()
++ setPfp()
+
++ getUuid()
++ getUsername()
++ getdisplayName()
++ getPassword()
++ getPfp
+
+--
+Class will be used to create a user. 
+Automatically sets username to 
+displayname. Insert statement in
+saveUser() function.
+
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>470</x><y>140</y><w>210</w><h>440</h></coordinates><panel_attributes>&lt;&lt;Shopitem&gt;&gt;
+
+--
+- String uuid
+- String gameTitle
+- String gameDesc
+- double gamePrice
+- String gameCategory
+- int gameOS
+- Blob gameThumbnail
+
+--
++ Shopitem()
+
++ saveGame()
++ buyGame();
+
++ getUuid()
++ getGameTitle()
++ getGameDesc()
++ getGamePrice()
++ getGameCategory()
++ get gameOS
++ getGameThumbnail()
+
+--
+Class will be used to get gamedetails
+into shop, in a viewable form. 
+Also to add games to the database
+via the console
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>210</x><y>0</y><w>1080</w><h>60</h></coordinates><panel_attributes>L I Q U I D
+CLASS DIAGRAM
+- Zeiter Marvin
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>580</y><w>210</w><h>230</h></coordinates><panel_attributes>&lt;&lt;Basket&gt;&gt;
+
+--
+- Arraylist itemsInBasket
+
+--
++ Basket()
+
++ addBasket()
+
++ get itemsInBasket)(
+
+--
+Class will be used as a temporary
+storage for items the user wants to
+buy.
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>760</x><y>140</y><w>210</w><h>240</h></coordinates><panel_attributes>&lt;&lt;Wishlist&gt;&gt;
+
+--
+- Arraylist itemsInWishlist
+
+--
++ Wishlist()
+
++ addBasket()
+
++ get itemsInBasket)(
+
+--
+(Maybe) Class will be used to save
+games temporary and then insert it
+into the database. (DB will need
+rework)
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2147</x><y>940</y><w>100</w><h>30</h></coordinates><panel_attributes>SimpleClass</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>760</x><y>730</y><w>210</w><h>290</h></coordinates><panel_attributes>&lt;&lt;Transaction&gt;&gt;
+
+--
+- Arraylist itemsInBasked
+- Arraylist libraryItems
+- User user
+
+--
++ Wishlist()
+
++ addBasket()
+
++ setitemsInBasket()
++ setLibrary()
+
+--
+Class will be used for the automation
+of removing the amount of money a
+user has and adding the game to their
+library after user buys items in basket
+
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>760</x><y>400</y><w>210</w><h>120</h></coordinates><panel_attributes>&lt;&lt;Connection&gt;&gt;
+
+--
+
+--
++ s conn()
+--
+Class will be used for the database
+connection.
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>760</x><y>540</y><w>210</w><h>170</h></coordinates><panel_attributes>&lt;&lt;Main&gt;&gt;
+
+--
+
+--
++ s main()
++ start()
+
+--
+The start of the application itself &amp;
+the start method of javafx.
+Scenes will be changed here)
+
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1050</x><y>190</y><w>210</w><h>140</h></coordinates><panel_attributes>&lt;&lt;Shopcontroller&gt;&gt;
+
+--
+idk what variables I'll be using
+
+--
+idk what functions I'll be using
+
+--
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1050</x><y>350</y><w>210</w><h>140</h></coordinates><panel_attributes>&lt;&lt;Logincontroller&gt;&gt;
+
+--
+idk what variables I'll be using
+
+--
+idk what functions I'll be using
+
+--
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1050</x><y>510</y><w>210</w><h>140</h></coordinates><panel_attributes>&lt;&lt;Registercontroller&gt;&gt;
+
+--
+idk what variables I'll be using
+
+--
+idk what functions I'll be using
+
+--
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1050</x><y>670</y><w>210</w><h>140</h></coordinates><panel_attributes>&lt;&lt;Profilecontroller&gt;&gt;
+
+--
+idk what variables I'll be using
+
+--
+idk what functions I'll be using
+
+--
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1050</x><y>830</y><w>210</w><h>140</h></coordinates><panel_attributes>&lt;&lt;Librarycontroller&gt;&gt;
+
+--
+idk what variables I'll be using
+
+--
+idk what functions I'll be using
+
+--
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1020</x><y>72</y><w>270</w><h>930</h></coordinates><panel_attributes>Controller
+
+--
+Just controllers, that will be used for the
+communication between java and javafx
+
+--
+bg=gray</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>210</x><y>75</y><w>500</w><h>760</h></coordinates><panel_attributes>Objects
+
+--
+bg=gray</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>730</x><y>75</y><w>270</w><h>970</h></coordinates><panel_attributes>Other classes
+
+--
+bg=gray</panel_attributes><additional_attributes></additional_attributes></element></diagram>
