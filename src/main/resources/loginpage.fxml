@@ -11,7 +11,7 @@
          <children>
             <ImageView fitHeight="84.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/liquidlogo.png" />
+                  <Image url="@img/liquidlogo.png" />
                </image>
                <HBox.margin>
                   <Insets />
@@ -19,7 +19,7 @@
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                <image>
-                  <Image url="@../img/liquidtext.png" />
+                  <Image url="@img/liquidtext.png" />
                </image>
                <HBox.margin>
                   <Insets top="20.0" />
