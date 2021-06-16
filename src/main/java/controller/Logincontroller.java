@@ -1,3 +1,7 @@
+package controller;
+
+import classes.Conn;
+import classes.Stages;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -5,9 +9,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class Logincontroller
-{
-    // @FXML
+public class Logincontroller {
+
     @FXML
     private TextField accountnameField;
     @FXML
@@ -17,11 +20,13 @@ public class Logincontroller
     @FXML
     private Label check;
 
-    // variables
     String accountname;
     String password;
+    Stage primaryStage;
 
-    public void init(Stage stage) {
+    public void init(Stage primaryStage) {
+
+        this.primaryStage = primaryStage;
 
         loginBtn.setOnAction(actionEvent -> {
             this.accountname = accountnameField.getText();
@@ -33,7 +38,8 @@ public class Logincontroller
     private void logincheck(String accountname, String password) {
         Conn.conn();
         if (this.accountname.equals("marvin") && this.password.equals("sananas")) {
-            check.setText("sfsgs");
+            Stages stages = new Stages(this.primaryStage);
+            stages.storepage();
         } else {
             check.setText("Your account name or password is wrong");
         }

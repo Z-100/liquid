@@ -1,6 +1,8 @@
+package classes;
+
 import java.sql.*;
 
-class Conn {
+public class Conn {
     public static void conn() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -18,7 +20,7 @@ class Conn {
         ResultSet result = stmt.executeQuery("SELECT * FROM user");
 
         while(result.next()) {
-            System.out.println(result.getString(2) + "\t" + result.getString(4));
+            System.out.println(result.getString("accountname") + "\t" + result.getString("password"));
         }
     }
 }
