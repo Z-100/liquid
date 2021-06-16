@@ -16,14 +16,18 @@
     <top>
         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fitHeight="84.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../img/liquidlogo.png" />
-                    </image>
-                    <HBox.margin>
-                        <Insets left="150.0" />
-                    </HBox.margin>
-                </ImageView>
+            <Button fx:id="logoBtn" mnemonicParsing="false" prefHeight="94.0" prefWidth="105.0" style="-fx-background-color: transparent; -fx-text-fill: transparent; -fx-border-color: transparent;" text="Button">
+               <graphic>
+                      <ImageView fitHeight="84.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../img/liquidlogo.png" />
+                          </image>
+                      </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets left="120.0" right="5.0" />
+               </HBox.margin>
+            </Button>
                 <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                     <image>
                         <Image url="@../img/liquidtext.png" />
@@ -69,7 +73,17 @@
         </VBox>
     </center>
     <bottom>
-        <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+        <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="easteregg" fitHeight="84.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../img/unicorn.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="20.0" left="475.0" top="10.0" />
+               </HBox.margin>
+            </ImageView>
+         </children></HBox>
     </bottom>
     <left>
         <Pane prefHeight="200.0" prefWidth="154.0" BorderPane.alignment="CENTER">

@@ -89,7 +89,7 @@ public class Stages {
 
             this.primaryStage.setScene(new Scene(root));
             this.primaryStage.setResizable(false);
-            this.primaryStage.setTitle("L I Q U I D: Library");
+            this.primaryStage.setTitle("L I Q U I D: Profile");
             this.primaryStage.show();
         } catch(IOException e) {
             e.printStackTrace();

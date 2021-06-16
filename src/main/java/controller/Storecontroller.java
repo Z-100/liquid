@@ -20,7 +20,7 @@ public class Storecontroller {
             stages.storepage();
         });
         libraryBtn.setOnAction(actionEvent -> {
-            stages.libraryPage();
+            stages.librarypage();
         });
     }
 }
