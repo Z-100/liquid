@@ -1,76 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="500" maxWidth="500" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" scaleShape="false" style="-fx-background-color: #1c1c1c;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Librarycontroller">
-    <left>
-        <Pane prefHeight="205.0" prefWidth="51.0" BorderPane.alignment="CENTER" />
-    </left>
-    <bottom>
-        <Pane prefHeight="94.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
-    </bottom>
-    <right>
-        <Pane prefHeight="0.0" prefWidth="154.0" BorderPane.alignment="CENTER" />
-    </right>
-    <center>
-        <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <right>
-                <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-                    <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                            <children>
-                                <Label text="Filter by price" />
-                                <Slider />
-                                <Label text="15.-" />
-                            </children>
-                        </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                            <children>
-                                <Label text="Filter by OS" />
-                                <RadioButton mnemonicParsing="false" text="RadioButton" />
-                                <RadioButton mnemonicParsing="false" text="RadioButton" />
-                                <RadioButton mnemonicParsing="false" text="RadioButton" />
-                            </children>
-                        </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                            <children>
-                                <Label text="Filter by category" />
-                                <RadioButton mnemonicParsing="false" text="RadioButton" />
-                                <RadioButton mnemonicParsing="false" text="RadioButton" />
-                                <RadioButton mnemonicParsing="false" text="RadioButton" />
-                            </children>
-                        </VBox>
-                    </children>
-                </VBox>
-            </right>
-            <center>
-                <ListView prefHeight="205.0" prefWidth="231.0" BorderPane.alignment="CENTER" />
-            </center>
-            <top>
-                <VBox prefHeight="47.0" prefWidth="395.0" BorderPane.alignment="CENTER">
-                    <children>
-                        <Label text="Search for game" />
-                        <TextField prefHeight="31.0" prefWidth="229.0" style="-fx-background-color: #3b3b3b;" />
-                    </children>
-                </VBox>
-            </top>
-        </BorderPane>
-    </center>
-    <top>
-        <HBox prefHeight="48.0" prefWidth="600.0" style="-fx-background-color: #3b3b3b;" BorderPane.alignment="CENTER">
-            <children>
-                <Button fx:id="storeBtn" mnemonicParsing="false" text="Store" />
-                <Button fx:id="libraryBtn" mnemonicParsing="false" text="Library" />
-            </children>
-        </HBox>
-    </top>
-</BorderPane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Librarycontroller">
+   <children>
+      <HBox prefHeight="48.0" prefWidth="600.0" style="-fx-background-color: #3b3b3b;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="storeBtn" mnemonicParsing="false" text="Store" />
+            <Button fx:id="libraryBtn" mnemonicParsing="false" text="Library" />
+         </children>
+      </HBox>
+      <HBox layoutY="48.0" prefHeight="355.0" prefWidth="600.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="48.0">
+         <children>
+            <TableView fx:id="gamelist" fixedCellSize="1.0" prefHeight="200.0" prefWidth="200.0" />
+            <VBox prefHeight="355.0" prefWidth="445.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="448.0" pickOnBounds="true" preserveRatio="true" />
+                  <TextArea prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
