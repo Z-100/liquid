@@ -36,7 +36,7 @@ public class Registercontroller {
     }
 
     private void logincheck(String accountname, String password) {
-        Conn.conn();
+//        Conn.conn();
         if (this.accountname.equals("marvin") && this.password.equals("sananas")) {
             Stages stages = new Stages(this.primaryStage);
             stages.storepage();
