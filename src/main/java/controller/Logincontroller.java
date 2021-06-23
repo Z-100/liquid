@@ -61,7 +61,7 @@ public class Logincontroller {
             String statement = "SELECT username, password FROM user";
 
             Conn conn = new Conn();
-            conn.connect(statement);
+            conn.query(statement);
 
             while (conn.getResult().next()) {
                 String accountnameDB = conn.getResult().getString("username");

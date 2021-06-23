@@ -45,16 +45,15 @@ public class Registercontroller {
     private void tokencheck(String username, String password, String token) {
         try {
             String statement1 = "SELECT token FROM token";
-
             String statement2 = "INSERT INTO user (username, displayname, password) VALUES (" + username + ", " + username + ", " + password + ")";
 
             Conn conn1 = new Conn();
-            conn1.connect(statement1);
+            conn1.query(statement1);
 
             while(conn1.getResult().next()) {
                 if (token.equals(conn1.getResult().getString("token"))) {
                     Conn conn2 = new Conn();
-                    conn2.connect(statement2);
+                    conn2.query(statement2);
 
                     Stages stages = new Stages(this.primaryStage);
                     stages.storepage();

@@ -50,7 +50,7 @@
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin></Label>
-                <TextField fx:id="usernameField" promptText="Enter username" style="-fx-background-color: #3b3b3b;">
+                <TextField fx:id="usernameField" promptText="Enter username" style="-fx-background-color: #3b3b3b; -fx-text-fill: #E2E2E2;">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin></TextField>
@@ -58,7 +58,7 @@
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin></Label>
-                <PasswordField fx:id="passwordField" prefHeight="25.0" prefWidth="276.0" promptText="Enter password" style="-fx-background-color: #3b3b3b;">
+                <PasswordField fx:id="passwordField" prefHeight="25.0" prefWidth="276.0" promptText="Enter password" style="-fx-background-color: #3b3b3b; -fx-text-fill: #E2E2E2;">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin></PasswordField>

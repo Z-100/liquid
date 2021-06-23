@@ -21,6 +21,8 @@ public class Librarycontroller {
     @FXML
     private Button profileBtn;
     @FXML
+    private Button logoutBtn;
+    @FXML
     private TableView<Game> gamelist;
 
     private ObservableList<Game> games;
@@ -38,6 +40,10 @@ public class Librarycontroller {
 
         profileBtn.setOnAction(actionEvent -> {
             stages.profilepage();
+        });
+
+        logoutBtn.setOnAction(actionEvent -> {
+            stages.loginpage();
         });
 
 

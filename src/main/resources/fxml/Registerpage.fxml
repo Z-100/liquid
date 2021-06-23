@@ -50,7 +50,7 @@
                     <VBox.margin>
                         <Insets bottom="5.0" />
                     </VBox.margin></Label>
-                <TextField fx:id="usernameField" promptText="Enter username" style="-fx-background-color: #3b3b3b;">
+                <TextField fx:id="usernameField" promptText="Enter username" style="-fx-background-color: #3b3b3b; -fx-text-fill: #E2E2E2;">
                     <VBox.margin>
                         <Insets bottom="10.0" />
                     </VBox.margin></TextField>
@@ -58,12 +58,12 @@
                     <VBox.margin>
                         <Insets bottom="5.0" />
                     </VBox.margin></Label>
-                <PasswordField fx:id="passwordField" prefHeight="25.0" prefWidth="276.0" promptText="Enter password" style="-fx-background-color: #3b3b3b;">
+                <PasswordField fx:id="passwordField" prefHeight="25.0" prefWidth="276.0" promptText="Enter password" style="-fx-background-color: #3b3b3b; -fx-text-fill: #E2E2E2;">
                     <VBox.margin>
                         <Insets bottom="10.0" />
                     </VBox.margin></PasswordField>
             <Label layoutX="10.0" layoutY="67.0" style="-fx-text-fill: #adadad;" text="Enter token" />
-            <TextField fx:id="tokenField" layoutX="10.0" layoutY="84.0" promptText="Enter token" style="-fx-background-color: #3b3b3b;" />
+            <TextField fx:id="tokenField" layoutX="10.0" layoutY="84.0" promptText="Enter token" style="-fx-background-color: #3b3b3b; -fx-text-fill: #E2E2E2;" />
                 <HBox prefHeight="100.0" prefWidth="200.0">
                     <children>
                         <Button fx:id="registerBtn" mnemonicParsing="false" prefHeight="77.0" prefWidth="90.0" style="-fx-text-fill: #adadad; -fx-background-color: #3b3b3b;" text="Register" />

@@ -14,6 +14,8 @@ public class Profilecontroller {
     @FXML
     private Button profileBtn;
     @FXML
+    private Button logoutBtn;
+    @FXML
     private TextField displaynameField;
     @FXML
     private PasswordField passwordField;
@@ -41,6 +43,10 @@ public class Profilecontroller {
 
         profileBtn.setOnAction(actionEvent -> {
             stages.profilepage();
+        });
+
+        logoutBtn.setOnAction(actionEvent -> {
+            stages.loginpage();
         });
 
 

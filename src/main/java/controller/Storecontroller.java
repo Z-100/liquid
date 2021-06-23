@@ -15,6 +15,8 @@ public class Storecontroller {
     @FXML
     private Button profileBtn;
     @FXML
+    private Button logoutBtn;
+    @FXML
     private TableView<Game> gameTableView;
     @FXML
     private Label maxpriceLabel;
@@ -55,6 +57,10 @@ public class Storecontroller {
 
         profileBtn.setOnAction(actionEvent -> {
             stages.profilepage();
+        });
+
+        logoutBtn.setOnAction(actionEvent -> {
+            stages.loginpage();
         });
 
         double priceVal = maxpriceSlider.getValue();

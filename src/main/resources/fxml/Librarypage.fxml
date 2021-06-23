@@ -11,40 +11,44 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="200.0" minWidth="1000.0" prefHeight="1344.0" prefWidth="2543.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Librarycontroller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="200.0" minWidth="1000.0" prefHeight="857.0" prefWidth="1660.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Librarycontroller">
    <children>
-      <HBox minHeight="100.0" minWidth="1000.0" prefHeight="131.0" prefWidth="2543.0" style="-fx-background-color: #3b3b3b;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox minHeight="100.0" minWidth="1000.0" prefHeight="103.0" prefWidth="2543.0" style="-fx-background-color: #363636;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ButtonBar prefHeight="131.0" prefWidth="720.0">
+            <ButtonBar prefHeight="103.0" prefWidth="601.0">
               <buttons>
-                  <Button fx:id="storeBtn" minWidth="200.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="221.0" text="Store">
-                     <font>
-                        <Font size="24.0" />
-                     </font></Button>
-                  <Button fx:id="libraryBtn" mnemonicParsing="false" prefHeight="70.0" prefWidth="221.0" text="Library">
+                  <Button fx:id="storeBtn" minWidth="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-text-fill: #0B080E; -fx-background-color: #BB86FC;" text="Store">
                      <font>
                         <Font name="Bahnschrift" size="24.0" />
                      </font></Button>
-                <Button fx:id="profileBtn" mnemonicParsing="false" prefHeight="70.0" prefWidth="221.0" text="Profile">
+                  <Button fx:id="libraryBtn" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-text-fill: #0B080E; -fx-background-color: #BB86FC;" text="Library">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Bahnschrift" size="24.0" />
                      </font></Button>
+                <Button fx:id="profileBtn" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-text-fill: #0B080E; -fx-background-color: #BB86FC;" text="Profile">
+                     <font>
+                        <Font name="Bahnschrift" size="24.0" />
+                     </font></Button>
+                 <Button fx:id="logoutBtn" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" style="-fx-text-fill: #0B080E; -fx-background-color: #BB86FC;" text="Log out">
+                    <font>
+                       <Font name="Bahnschrift" size="24.0" />
+                    </font></Button>
               </buttons>
             </ButtonBar>
          </children>
       </HBox>
-      <HBox layoutY="131.0" prefHeight="1216.0" prefWidth="2543.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="131.0">
+      <HBox layoutY="105.0" prefHeight="755.0" prefWidth="1660.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="105.0">
          <children>
-            <TableView fx:id="gamelist" fixedCellSize="1.0" minHeight="50.0" minWidth="200.0" prefHeight="1253.0" prefWidth="473.0" />
-            <VBox prefHeight="1216.0" prefWidth="2076.0">
+            <TableView fx:id="gamelist" fixedCellSize="1.0" minHeight="50.0" minWidth="200.0" prefHeight="729.0" prefWidth="272.0" style="-fx-background-color: #1D1D1D;" />
+            <VBox prefHeight="729.0" prefWidth="1370.0">
                <children>
                   <ImageView fitHeight="379.0" fitWidth="1653.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/liquidtext.png" />
                      </image></ImageView>
-                  <Label text="This game does not have any description">
+                  <Label style="-fx-text-fill: #E2E2E2;" text="This game does not have any description">
                      <font>
-                        <Font name="Bahnschrift" size="30.0" />
+                        <Font name="Bahnschrift" size="20.0" />
                      </font>
                   </Label>
                </children>
