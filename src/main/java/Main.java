@@ -11,6 +11,6 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         Stages stages = new Stages(primaryStage);
-        stages.registerpage();
+        stages.storepage();
     }
 }

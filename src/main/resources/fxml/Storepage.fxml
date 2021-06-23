@@ -1,76 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="500" maxWidth="500" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" scaleShape="false" style="-fx-background-color: #1c1c1c;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Storecontroller">
-   <left>
-      <Pane prefHeight="205.0" prefWidth="51.0" BorderPane.alignment="CENTER" />
-   </left>
-   <bottom>
-      <Pane prefHeight="94.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
-   </bottom>
-   <right>
-      <Pane prefHeight="0.0" prefWidth="154.0" BorderPane.alignment="CENTER" />
-   </right>
-   <center>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <right>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-               <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label text="Filter by price" />
-                        <Slider />
-                        <Label text="15.-" />
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label text="Filter by OS" />
-                        <RadioButton mnemonicParsing="false" text="RadioButton" />
-                        <RadioButton mnemonicParsing="false" text="RadioButton" />
-                        <RadioButton mnemonicParsing="false" text="RadioButton" />
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label text="Filter by category" />
-                        <RadioButton mnemonicParsing="false" text="RadioButton" />
-                        <RadioButton mnemonicParsing="false" text="RadioButton" />
-                        <RadioButton mnemonicParsing="false" text="RadioButton" />
-                     </children>
-                  </VBox>
-               </children>
-            </VBox>
-         </right>
-         <center>
-            <ListView prefHeight="205.0" prefWidth="231.0" BorderPane.alignment="CENTER" />
-         </center>
-         <top>
-            <VBox prefHeight="47.0" prefWidth="395.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label text="Search for game" />
-                  <TextField prefHeight="31.0" prefWidth="229.0" style="-fx-background-color: #3b3b3b;" />
-               </children>
-            </VBox>
-         </top>
-      </BorderPane>
-   </center>
-   <top>
-      <HBox prefHeight="48.0" prefWidth="600.0" style="-fx-background-color: #3b3b3b;" BorderPane.alignment="CENTER">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="200.0" minWidth="1000.0" prefHeight="1344.0" prefWidth="2543.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Storecontroller">
+   <children>
+      <HBox minHeight="100.0" minWidth="1000.0" prefHeight="131.0" prefWidth="2543.0" style="-fx-background-color: #3b3b3b;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="storeBtn" mnemonicParsing="false" text="Store" />
-            <Button fx:id="libraryBtn" mnemonicParsing="false" text="Library" />
+            <ButtonBar prefHeight="131.0" prefWidth="720.0">
+               <buttons>
+                  <Button fx:id="storeBtn" minWidth="200.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="221.0" text="Store">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Button>
+                  <Button fx:id="libraryBtn" mnemonicParsing="false" prefHeight="70.0" prefWidth="221.0" text="Library">
+                     <font>
+                        <Font name="Bahnschrift" size="24.0" />
+                     </font></Button>
+                  <Button fx:id="profileBtn" mnemonicParsing="false" prefHeight="70.0" prefWidth="221.0" text="Profile">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Button>
+               </buttons>
+            </ButtonBar>
          </children>
       </HBox>
-   </top>
-</BorderPane>
+      <HBox layoutY="131.0" prefHeight="1216.0" prefWidth="2543.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="131.0">
+         <children>
+            <Pane prefHeight="1216.0" prefWidth="566.0" />
+            <TableView prefHeight="1216.0" prefWidth="1226.0" />
+            <VBox prefHeight="1216.0" prefWidth="234.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label fx:id="maxpriceLabel" text="Max. price: 15 £">
+                           <font>
+                              <Font name="Bahnschrift" size="27.0" />
+                           </font>
+                        </Label>
+                        <Slider fx:id="maxpriceSlider" blockIncrement="5.0" majorTickUnit="5.0" max="25.0" minorTickCount="0" prefHeight="109.0" prefWidth="234.0" snapToTicks="true" value="25.0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <RadioButton mnemonicParsing="false" text="Windows">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="os" />
+                           </toggleGroup>
+                           <font>
+                              <Font name="Bahnschrift" size="27.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Linux" toggleGroup="$os">
+                           <font>
+                              <Font name="Bahnschrift" size="27.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton layoutX="10.0" layoutY="28.0" mnemonicParsing="false" text="MacOS" toggleGroup="$os">
+                           <font>
+                              <Font name="Bahnschrift" size="27.0" />
+                           </font>
+                        </RadioButton>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Label">
+                           <font>
+                              <Font name="Bahnschrift" size="27.0" />
+                           </font>
+                        </Label>
+                        <CheckBox fx:id="actionBox" mnemonicParsing="false" text="Action">
+                           <font>
+                              <Font name="Bahnschrift" size="27.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="horrorBox" mnemonicParsing="false" text="Horror">
+                           <font>
+                              <Font name="Bahnschrift" size="27.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="indieBox" mnemonicParsing="false" text="Indie">
+                           <font>
+                              <Font name="Bahnschrift" size="27.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="tripleaBox" mnemonicParsing="false" text="Triple A">
+                           <font>
+                              <Font name="Bahnschrift" size="27.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="doubleaBox" mnemonicParsing="false" text="Double A">
+                           <font>
+                              <Font name="Bahnschrift" size="27.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="aBox" mnemonicParsing="false" text="A">
+                           <font>
+                              <Font name="Bahnschrift" size="27.0" />
+                           </font>
+                        </CheckBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
