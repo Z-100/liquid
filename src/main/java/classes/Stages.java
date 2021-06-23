@@ -27,14 +27,14 @@ public class Stages {
             this.primaryStage.setResizable(false);
             this.primaryStage.setTitle("L I Q U I D: Login");
             this.primaryStage.show();
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void registerpage() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Registerpage.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Registerpage.fxml"));
             Parent root = fxmlLoader.load();
             Registercontroller registercontroller = fxmlLoader.getController();
             registercontroller.init(this.primaryStage);
@@ -43,7 +43,7 @@ public class Stages {
             this.primaryStage.setResizable(false);
             this.primaryStage.setTitle("L I Q U I D: Register");
             this.primaryStage.show();
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -56,10 +56,10 @@ public class Stages {
             storecontroller.init(this.primaryStage);
 
             this.primaryStage.setScene(new Scene(root));
-            this.primaryStage.setResizable(false);
+            this.primaryStage.setResizable(true);
             this.primaryStage.setTitle("L I Q U I D: Store");
             this.primaryStage.show();
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -72,10 +72,10 @@ public class Stages {
             librarycontroller.init(this.primaryStage);
 
             this.primaryStage.setScene(new Scene(root));
-            this.primaryStage.setResizable(false);
+            this.primaryStage.setResizable(true);
             this.primaryStage.setTitle("L I Q U I D: Library");
             this.primaryStage.show();
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -88,10 +88,10 @@ public class Stages {
             profilecontroller.init(this.primaryStage);
 
             this.primaryStage.setScene(new Scene(root));
-            this.primaryStage.setResizable(false);
+            this.primaryStage.setResizable(true);
             this.primaryStage.setTitle("L I Q U I D: Profile");
             this.primaryStage.show();
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

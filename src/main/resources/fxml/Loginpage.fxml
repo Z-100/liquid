@@ -11,8 +11,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="500" maxWidth="500" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" scaleShape="false" style="-fx-background-color: #1c1c1c;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Logincontroller">
+<BorderPane maxHeight="500" maxWidth="500" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" scaleShape="false" style="-fx-background-color: #1c1c1c;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Logincontroller">
     <top>
         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
@@ -45,11 +46,11 @@
     <center>
         <VBox prefHeight="200.0" prefWidth="209.0" BorderPane.alignment="CENTER">
             <children>
-                <Label style="-fx-text-fill: #adadad;" text="Enter account name">
+                <Label style="-fx-text-fill: #adadad;" text="Enter username">
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin></Label>
-                <TextField fx:id="accountnameField" promptText="Enter account name" style="-fx-background-color: #3b3b3b;">
+                <TextField fx:id="usernameField" promptText="Enter username" style="-fx-background-color: #3b3b3b; -fx-text-fill: #E2E2E2;">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin></TextField>
@@ -57,14 +58,23 @@
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin></Label>
-                <PasswordField fx:id="passwordField" prefHeight="25.0" prefWidth="276.0" promptText="Enter password" style="-fx-background-color: #3b3b3b;">
+                <PasswordField fx:id="passwordField" prefHeight="25.0" prefWidth="276.0" promptText="Enter password" style="-fx-background-color: #3b3b3b; -fx-text-fill: #E2E2E2;">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin></PasswordField>
-                <Button fx:id="loginBtn" mnemonicParsing="false" prefHeight="77.0" prefWidth="90.0" style="-fx-text-fill: #adadad; -fx-background-color: #3b3b3b;" text="Log in">
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin></Button>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                      <Button fx:id="loginBtn" mnemonicParsing="false" prefHeight="77.0" prefWidth="90.0" style="-fx-text-fill: #adadad; -fx-background-color: #3b3b3b;" text="Log in" />
+                  <Label fx:id="registerbtn" style="-fx-text-fill: #adadad;" text="Register instead">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
                 <Label fx:id="check" style="-fx-text-fill: #adadad;" />
             </children>
          <BorderPane.margin>

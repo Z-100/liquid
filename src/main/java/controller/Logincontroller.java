@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class Logincontroller {
 
     @FXML
-    private TextField accountnameField;
+    private TextField usernameField;
     @FXML
     private PasswordField passwordField;
     @FXML
@@ -27,9 +27,9 @@ public class Logincontroller {
     private Label check;
     @FXML
     private ImageView easteregg;
+    @FXML
+    private Label registerbtn;
 
-    String accountname;
-    String password;
     Stage primaryStage;
     int i;
 
@@ -38,13 +38,7 @@ public class Logincontroller {
         this.primaryStage = primaryStage;
 
         loginBtn.setOnAction(actionEvent -> {
-            this.accountname = accountnameField.getText();
-            this.password = passwordField.getText();
-            try {
-                logincheck(this.accountname, this.password);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+            logincheck(usernameField.getText(), passwordField.getText());
         });
 
         logoBtn.setOnAction(actionEvent -> {
@@ -55,25 +49,34 @@ public class Logincontroller {
                 this.primaryStage.setTitle("Easteregg unlocked!");
             }
         });
+
+        registerbtn.setOnMouseClicked(mouseEvent -> {
+            Stages stages = new Stages(this.primaryStage);
+            stages.registerpage();
+        });
     }
 
-    private void logincheck(String accountname, String password) throws SQLException {
-        String statement = "SELECT username, password FROM user";
+    private void logincheck(String accountname, String password) {
+        try {
+            String statement = "SELECT username, password FROM user";
 
-        Conn conn = new Conn();
-        conn.conn(statement);
+            Conn conn = new Conn();
+            conn.query(statement);
 
-        while(conn.getResult().next()) {
-            String accountnameDB = conn.getResult().getString("username");
-            String passwordDB = conn.getResult().getString("password");
+            while (conn.getResult().next()) {
+                String accountnameDB = conn.getResult().getString("username");
+                String passwordDB = conn.getResult().getString("password");
 
-            if (this.accountname.equals(accountnameDB) && this.password.equals(passwordDB)) {
-                Stages stages = new Stages(this.primaryStage);
-                stages.storepage();
-            } else {
-                check.setText("Your account name or password is wrong");
-                check.setTextFill(Color.rgb(166, 0, 255, 1));
+                if (accountname.equals(accountnameDB) && password.equals(passwordDB)) {
+                    Stages stages = new Stages(this.primaryStage);
+                    stages.storepage();
+                } else {
+                    check.setText("Your account name or password is wrong");
+                    check.setTextFill(Color.rgb(166, 0, 255, 1));
+                }
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -11,19 +11,24 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="500" maxWidth="500" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" scaleShape="false" style="-fx-background-color: #1c1c1c;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Registercontroller">
+<BorderPane maxHeight="500" maxWidth="500" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" scaleShape="false" style="-fx-background-color: #1c1c1c;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Registercontroller">
     <top>
         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fitHeight="84.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../img/liquidlogo.png" />
-                    </image>
+                <Button fx:id="logoBtn" mnemonicParsing="false" prefHeight="94.0" prefWidth="105.0" style="-fx-background-color: transparent; -fx-text-fill: transparent; -fx-border-color: transparent;" text="Button">
+                    <graphic>
+                        <ImageView fitHeight="84.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../img/liquidlogo.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
                     <HBox.margin>
-                        <Insets left="150.0" />
+                        <Insets left="120.0" right="5.0" />
                     </HBox.margin>
-                </ImageView>
+                </Button>
                 <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                     <image>
                         <Image url="@../img/liquidtext.png" />
@@ -41,26 +46,37 @@
     <center>
         <VBox prefHeight="200.0" prefWidth="209.0" BorderPane.alignment="CENTER">
             <children>
-                <Label style="-fx-text-fill: #adadad;" text="Enter account name">
+                <Label style="-fx-text-fill: #adadad;" text="Create username">
                     <VBox.margin>
                         <Insets bottom="5.0" />
                     </VBox.margin></Label>
-                <TextField fx:id="accountnameField" promptText="Enter account name" style="-fx-background-color: #3b3b3b;">
+                <TextField fx:id="usernameField" promptText="Enter username" style="-fx-background-color: #3b3b3b; -fx-text-fill: #E2E2E2;">
                     <VBox.margin>
                         <Insets bottom="10.0" />
                     </VBox.margin></TextField>
-                <Label style="-fx-text-fill: #adadad;" text="Enter password">
+                <Label style="-fx-text-fill: #adadad;" text="Create password">
                     <VBox.margin>
                         <Insets bottom="5.0" />
                     </VBox.margin></Label>
-                <PasswordField fx:id="passwordField" prefHeight="25.0" prefWidth="276.0" promptText="Enter password" style="-fx-background-color: #3b3b3b;">
+                <PasswordField fx:id="passwordField" prefHeight="25.0" prefWidth="276.0" promptText="Enter password" style="-fx-background-color: #3b3b3b; -fx-text-fill: #E2E2E2;">
                     <VBox.margin>
                         <Insets bottom="10.0" />
                     </VBox.margin></PasswordField>
-                <Button fx:id="loginBtn" mnemonicParsing="false" prefHeight="77.0" prefWidth="90.0" style="-fx-text-fill: #adadad; -fx-background-color: #3b3b3b;" text="Log in">
-                    <VBox.margin>
-                        <Insets top="10.0" />
-                    </VBox.margin></Button>
+            <Label layoutX="10.0" layoutY="67.0" style="-fx-text-fill: #adadad;" text="Enter token" />
+            <TextField fx:id="tokenField" layoutX="10.0" layoutY="84.0" promptText="Enter token" style="-fx-background-color: #3b3b3b; -fx-text-fill: #E2E2E2;" />
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Button fx:id="registerBtn" mnemonicParsing="false" prefHeight="77.0" prefWidth="90.0" style="-fx-text-fill: #adadad; -fx-background-color: #3b3b3b;" text="Register" />
+                        <Label fx:id="loginBtn" style="-fx-text-fill: #adadad;" text="Login instead">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                </HBox>
                 <Label fx:id="check" style="-fx-text-fill: #adadad;" />
             </children>
             <BorderPane.margin>
@@ -69,7 +85,7 @@
         </VBox>
     </center>
     <bottom>
-        <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+        <HBox prefHeight="39.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
     </bottom>
     <left>
         <Pane prefHeight="200.0" prefWidth="154.0" BorderPane.alignment="CENTER">
