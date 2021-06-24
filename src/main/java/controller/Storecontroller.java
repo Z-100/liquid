@@ -67,5 +67,10 @@ public class Storecontroller {
         //TODO Do some slider stuff
 //        maxpriceSlider.setOnDragDetected(System.out::println(maxpriceSlider.getValue());
 
+        TableColumn<Game, String> thumbnail = new TableColumn<>();
+//        thumbnail.setCellValueFactory();
+        TableColumn<Game, String> title = new TableColumn<>();
+        TableColumn<Game, String> price = new TableColumn<>();
+
     }
 }

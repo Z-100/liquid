@@ -2,6 +2,7 @@ package controller;
 
 import classes.Conn;
 import classes.Stages;
+import classes.UserSession;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -47,17 +48,16 @@ public class Registercontroller {
             String statement1 = "SELECT token FROM token";
             String statement2 = "INSERT INTO user (username, displayname, password) VALUES (" + username + ", " + username + ", " + password + ")";
 
-            Conn conn1 = new Conn();
-            conn1.query(statement1);
+            Conn conn = new Conn();
+            conn.query(statement1, 0);
 
-            while(conn1.getResult().next()) {
-                if (token.equals(conn1.getResult().getString("token"))) {
-                    Conn conn2 = new Conn();
-                    conn2.query(statement2);
-
+            while(conn.getResult().next()) {
+                if (token.equals(conn.getResult().getString("token"))) {
+                    conn.query(statement2, 1);
+                    UserSession.getInstance(username, username);
                     Stages stages = new Stages(this.primaryStage);
                     stages.storepage();
-                } else { // TODO: Maybe Regex
+                } else {
                     check.setText("The entered token is wrong");
                     check.setTextFill(Color.rgb(166, 0, 255, 1));
                 }

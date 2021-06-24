@@ -2,6 +2,7 @@ package controller;
 
 import classes.Game;
 import classes.Stages;
+import classes.UserSession;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -43,6 +44,7 @@ public class Librarycontroller {
         });
 
         logoutBtn.setOnAction(actionEvent -> {
+            UserSession.removeInstance();
             stages.loginpage();
         });
 
