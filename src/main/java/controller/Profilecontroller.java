@@ -1,9 +1,13 @@
 package controller;
 
+import classes.Conn;
 import classes.Stages;
+import classes.UserSession;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+
+import java.sql.SQLException;
 
 public class Profilecontroller {
 
@@ -27,8 +31,14 @@ public class Profilecontroller {
     private Button submitBtn;
     @FXML
     private Button editToggleBtn;
+    @FXML
+    private Label usernameLabel;
+    @FXML
+    private Label displaynameLabel;
 
     int editToggle = 0;
+    String session_username = UserSession.getUserName();
+    String session_displayname = UserSession.getDisplayName();
 
     public void init(Stage primaryStage) {
         Stages stages = new Stages(primaryStage);
@@ -49,17 +59,8 @@ public class Profilecontroller {
             stages.loginpage();
         });
 
-
-        submitBtn.setOnAction(actionEvent -> {
-            String displayname = displaynameField.getText();
-            String password = passwordField.getText();
-            String confirm = confirmField.getText();
-            if (!displayname.isEmpty() && !password.isEmpty() && !confirm.isEmpty()) {
-                changeDetails(displayname, password, confirm);
-            } else {
-                errorLabel.setText("Please fill in all the information needed");
-            }
-        });
+        usernameLabel.setText(session_username);
+        displaynameLabel.setText(session_displayname);
 
         editToggleBtn.setOnAction(actionEvent -> {
             if (editToggle == 0) {
@@ -69,11 +70,40 @@ public class Profilecontroller {
             }
             toggle();
         });
+
+        submitBtn.setOnAction(actionEvent -> {
+            String displayname = displaynameField.getText();
+            String password = passwordField.getText();
+            String confirm = confirmField.getText();
+
+            if (!displayname.isEmpty() && !password.isEmpty() && !confirm.isEmpty()) {
+                changeDetails(displayname, password, confirm, stages);
+            } else {
+                errorLabel.setText("Please fill in all the information needed");
+            }
+        });
+
     }
 
-    private void changeDetails(String displayname, String password, String confirm) {
-        // TODO DO SQL STUFF
-        errorLabel.setText("Successfully changed acc info");
+    private void changeDetails(String displayname, String password, String confirm, Stages stages) {
+        Conn conn = new Conn();
+
+        String statement1 = "SELECT password FROM user WHERE username = '" + session_username + "'";
+        String statement2 = "UPDATE user SET displayname = '" + displayname + "', password = '" + password + "' WHERE username = '" + session_username + "'";
+
+        conn.query(statement1, 0);
+        try {
+            while (conn.getResult().next()) {
+                if (confirm.equals(conn.getResult().getString("password"))) {
+                    conn.query(statement2, 1);
+                    System.out.println("Correct password");
+                }
+            }
+            UserSession.setDisplayName(displayname);
+            stages.profilepage();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void toggle() {

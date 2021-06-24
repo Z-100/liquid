@@ -2,6 +2,7 @@ package controller;
 
 import classes.Conn;
 import classes.Stages;
+import classes.UserSession;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -30,8 +31,8 @@ public class Logincontroller {
     @FXML
     private Label registerbtn;
 
-    Stage primaryStage;
-    int i;
+    private Stage primaryStage;
+    private int i;
 
     public void init(Stage primaryStage) {
 
@@ -51,23 +52,28 @@ public class Logincontroller {
         });
 
         registerbtn.setOnMouseClicked(mouseEvent -> {
+
+
             Stages stages = new Stages(this.primaryStage);
             stages.registerpage();
         });
     }
 
-    private void logincheck(String accountname, String password) {
+    private void logincheck(String username, String password) {
         try {
-            String statement = "SELECT username, password FROM user";
+            String statement = "SELECT username, displayname, password FROM user";
 
             Conn conn = new Conn();
-            conn.query(statement);
+            conn.query(statement, 0);
 
             while (conn.getResult().next()) {
-                String accountnameDB = conn.getResult().getString("username");
+                String usernameDB = conn.getResult().getString("username");
+                String displayNameDB = conn.getResult().getString("displayname");
                 String passwordDB = conn.getResult().getString("password");
 
-                if (accountname.equals(accountnameDB) && password.equals(passwordDB)) {
+                if (username.equals(usernameDB) && password.equals(passwordDB)) {
+                    UserSession.getInstance(usernameDB, displayNameDB);
+
                     Stages stages = new Stages(this.primaryStage);
                     stages.storepage();
                 } else {
