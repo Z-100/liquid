@@ -35,6 +35,20 @@
                     </font></Button>
               </buttons>
             </ButtonBar>
+            <HBox alignment="CENTER_RIGHT" prefHeight="103.0" prefWidth="1061.0">
+               <children>
+                  <Label fx:id="displaynameLabelTop" style="-fx-text-fill: #E2E2E2;" text="NAMNAMENAMENAME">
+                     <font>
+                        <Font name="Bahnschrift" size="27.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="userpfp" fitHeight="107.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/defaultpfp.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
          </children>
       </HBox>
       <HBox layoutY="105.0" prefHeight="755.0" prefWidth="1660.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="105.0">

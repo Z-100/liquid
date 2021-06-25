@@ -2,6 +2,7 @@ package controller;
 
 import classes.Game;
 import classes.Stages;
+import classes.UserSession;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -40,8 +41,10 @@ public class Storecontroller {
     private CheckBox doubleabox;
     @FXML
     private CheckBox aBox;
+    @FXML
+    private Label displaynameLabelTop;
 
-
+    String session_displayname = UserSession.getDisplayName();
     int editToggle = 0;
 
     public void init(Stage primaryStage) {
@@ -62,6 +65,7 @@ public class Storecontroller {
         logoutBtn.setOnAction(actionEvent -> {
             stages.loginpage();
         });
+        displaynameLabelTop.setText(session_displayname);
 
         double priceVal = maxpriceSlider.getValue();
         //TODO Do some slider stuff

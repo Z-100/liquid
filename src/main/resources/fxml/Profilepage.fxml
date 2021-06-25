@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -39,6 +41,20 @@
                             </font></Button>
                     </buttons>
                 </ButtonBar>
+            <HBox alignment="CENTER_RIGHT" prefHeight="103.0" prefWidth="1061.0">
+               <children>
+                  <Label fx:id="displaynameLabelTop" style="-fx-text-fill: #E2E2E2;" text="NAMNAMENAMENAME">
+                     <font>
+                        <Font name="Bahnschrift" size="27.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="userpfp" fitHeight="107.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/defaultpfp.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
             </children>
         </HBox>
         <HBox layoutY="102.0" prefHeight="758.0" prefWidth="1660.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="102.0">
@@ -102,18 +118,21 @@
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin></PasswordField>
-                        <Button fx:id="editToggleBtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" style="-fx-text-fill: #E2E2E2; -fx-background-color: #424242;" text="Change account information">
+                        <Button fx:id="editToggleBtn" alignment="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" style="-fx-text-fill: #E2E2E2; -fx-background-color: #BB86FC;" text="Change account information">
                            <font>
                               <Font name="Bahnschrift" size="18.0" />
                            </font>
                            <padding>
                               <Insets bottom="10.0" />
-                           </padding></Button>
-                        <Button fx:id="submitBtn" layoutX="10.0" layoutY="34.0" mnemonicParsing="false" style="-fx-text-fill: #E2E2E2; -fx-background-color: #424242;" text="Submit" visible="false">
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin></Button>
+                        <Button fx:id="submitBtn" layoutX="10.0" layoutY="34.0" mnemonicParsing="false" style="-fx-text-fill: #E2E2E2; -fx-background-color: #47FF93;" text="Submit" visible="false">
                            <font>
                               <Font name="Bahnschrift" size="18.0" />
                            </font></Button>
-                        <Label fx:id="errorLabel" style="-fx-text-fill: #adadad;">
+                        <Label fx:id="errorLabel" style="-fx-text-fill: #FF3F4C;">
                            <font>
                               <Font name="Bahnschrift" size="18.0" />
                            </font></Label>

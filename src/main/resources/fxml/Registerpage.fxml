@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="500" maxWidth="500" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" scaleShape="false" style="-fx-background-color: #1c1c1c;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Registercontroller">
+<BorderPane maxHeight="500" maxWidth="500" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" scaleShape="false" style="-fx-background-color: #1c1c1c;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Registercontroller">
     <top>
         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
@@ -66,18 +66,24 @@
             <TextField fx:id="tokenField" layoutX="10.0" layoutY="84.0" promptText="Enter token" style="-fx-background-color: #3b3b3b; -fx-text-fill: #E2E2E2;" />
                 <HBox prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button fx:id="registerBtn" mnemonicParsing="false" prefHeight="77.0" prefWidth="90.0" style="-fx-text-fill: #adadad; -fx-background-color: #3b3b3b;" text="Register" />
+                        <Button fx:id="registerBtn" mnemonicParsing="false" prefHeight="77.0" prefWidth="90.0" style="-fx-text-fill: #adadad; -fx-background-color: #3b3b3b;" text="Register">
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin></Button>
                         <Label fx:id="loginBtn" style="-fx-text-fill: #adadad;" text="Login instead">
                             <font>
                                 <Font size="16.0" />
                             </font>
                             <HBox.margin>
-                                <Insets left="10.0" />
+                                <Insets left="10.0" top="10.0" />
                             </HBox.margin>
                         </Label>
                     </children>
                 </HBox>
-                <Label fx:id="check" style="-fx-text-fill: #adadad;" />
+                <Label fx:id="check" style="-fx-text-fill: #FF3F4C;">
+               <VBox.margin>
+                  <Insets top="4.0" />
+               </VBox.margin></Label>
             </children>
             <BorderPane.margin>
                 <Insets top="40.0" />

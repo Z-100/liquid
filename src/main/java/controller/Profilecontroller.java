@@ -35,6 +35,8 @@ public class Profilecontroller {
     private Label usernameLabel;
     @FXML
     private Label displaynameLabel;
+    @FXML
+    private Label displaynameLabelTop;
 
     int editToggle = 0;
     String session_username = UserSession.getUserName();
@@ -61,6 +63,7 @@ public class Profilecontroller {
 
         usernameLabel.setText(session_username);
         displaynameLabel.setText(session_displayname);
+        displaynameLabelTop.setText(session_displayname);
 
         editToggleBtn.setOnAction(actionEvent -> {
             if (editToggle == 0) {
@@ -82,7 +85,6 @@ public class Profilecontroller {
                 errorLabel.setText("Please fill in all the information needed");
             }
         });
-
     }
 
     private void changeDetails(String displayname, String password, String confirm, Stages stages) {
