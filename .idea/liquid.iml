@@ -24,5 +24,7 @@
     <orderEntry type="library" name="Maven: org.openjfx:javafx-base:linux:15.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:15.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:linux:15.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-swing:17-ea+13" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-swing:linux:17-ea+13" level="project" />
   </component>
 </module>

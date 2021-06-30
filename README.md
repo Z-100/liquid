@@ -1,4 +1,12 @@
 # L I Q U I D
+### 1. Features
+* Library
+* Shop
+* Userprofile
+* Communitystore (Not enough time)
+### 2. How to make the project work
+* Intellij
+* Visual Studio Code
 
 ## Features
 * Library
@@ -32,3 +40,16 @@
     * user > user
     * transaction fees
     * thumbnails
+  
+## How to
+#### Intellij:
+1. New Project (Get from VCS)
+2. Install / Reload all Maven modules
+3. Edit Run configuration:
+    1. Add new config (maven)
+    2. Add the following line to the field "command line":
+    3. javafx:run
+4. Hit the run button
+
+#### Visual Studio Code:
+1. Read a manual

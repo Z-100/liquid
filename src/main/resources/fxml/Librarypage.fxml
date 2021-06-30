@@ -53,14 +53,14 @@
       </HBox>
       <HBox layoutY="105.0" prefHeight="755.0" prefWidth="1660.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="105.0">
          <children>
-            <TableView fx:id="gamelist" fixedCellSize="1.0" minHeight="50.0" minWidth="200.0" prefHeight="729.0" prefWidth="272.0" style="-fx-background-color: #1D1D1D;" />
+            <TableView fx:id="gameTableView" prefHeight="729.0" prefWidth="272.0" style="-fx-background-color: #1D1D1D;" />
             <VBox prefHeight="729.0" prefWidth="1370.0">
                <children>
-                  <ImageView fitHeight="379.0" fitWidth="1653.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="gameThumbnailImage" fitHeight="301.0" fitWidth="1292.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/liquidtext.png" />
                      </image></ImageView>
-                  <Label style="-fx-text-fill: #E2E2E2;" text="This game does not have any description">
+                  <Label fx:id="gameDescriptionLabel" style="-fx-text-fill: #E2E2E2;" text="This game does not have any description">
                      <font>
                         <Font name="Bahnschrift" size="20.0" />
                      </font>

@@ -37,6 +37,7 @@ public class Logincontroller {
     public void init(Stage primaryStage) {
 
         this.primaryStage = primaryStage;
+        usernameField.requestFocus();
 
         loginBtn.setOnAction(actionEvent -> {
             logincheck(usernameField.getText(), passwordField.getText());

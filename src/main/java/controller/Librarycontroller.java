@@ -1,18 +1,28 @@
 package controller;
 
+import classes.Conn;
 import classes.Game;
 import classes.Stages;
 import classes.UserSession;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
+import java.sql.SQLException;
 
 public class Librarycontroller {
 
@@ -25,11 +35,21 @@ public class Librarycontroller {
     @FXML
     private Button logoutBtn;
     @FXML
-    private TableView<Game> gamelist;
+    private TableView<Game> gameTableView;
     @FXML
     private Label displaynameLabelTop;
+    @FXML
+    private Label gameDescriptionLabel;
+    @FXML
+    private ImageView gameThumbnailImage;
 
-    private ObservableList<Game> games;
+    private String gameTitle;
+    private String gameDesc;
+    private String gameCategory;
+    private String gameType;
+    private double gamePrice;
+    private InputStream gameThumbnail;
+
     String session_displayname = UserSession.getDisplayName();
 
     public void init(Stage primaryStage) {
@@ -55,20 +75,60 @@ public class Librarycontroller {
         displaynameLabelTop.setText(session_displayname);
 
 
-        this.games = FXCollections.observableArrayList();
-        for (int i = 0; i < 6; i++) {
-            Game game = new Game("SANANAS", "SANANAS", "SANANAS", 15.99);
-            games.add(game);
-        }
-
         TableColumn<Game, String> title = new TableColumn("Title");
         title.setCellValueFactory(new PropertyValueFactory<Game, String>("title"));
-        // features -> features.getValue().titleProperty()
+        title.prefWidthProperty().bind(gameTableView.widthProperty().multiply(1));
 
-        title.prefWidthProperty().bind(gamelist.widthProperty().multiply(1));
+        TableColumn<Game, String> description = new TableColumn("Description");
+        description.setCellValueFactory(new PropertyValueFactory<Game, String>("description"));
+        description.prefWidthProperty().bind(gameTableView.widthProperty().multiply(0));
+
+        TableColumn<Game, byte[]> thumbnail = new TableColumn("Thumbnail");
+        description.setCellValueFactory(new PropertyValueFactory<>("thumbnail"));
+        description.prefWidthProperty().bind(gameTableView.widthProperty().multiply(0));
+
         title.setResizable(false);
+        gameTableView.getColumns().addAll(title, description, thumbnail);
+        gameTableView.setItems(getGames());
 
-        gamelist.getColumns().add(title);
-        gamelist.setItems(games);
+        gameTableView.setOnMouseClicked(mouseEvent -> {
+            getDescImg();
+        });
+    }
+
+    public ObservableList<Game> getGames() {
+        String statement1 = String.format(
+                "SELECT game.title, game.description, game.thumbnail FROM tt_user_game JOIN user ON tt_user_game.user_id = user.id JOIN game ON game.id = tt_user_game.game_id WHERE user.username = '%s'",
+                UserSession.getUserName()
+        );
+
+        Conn conn = new Conn();
+        conn.query(statement1, 0);
+
+        ObservableList<Game> games = FXCollections.observableArrayList();
+        try {
+            while (conn.getResult().next()) {
+                this.gameTitle = conn.getResult().getString("title");
+                this.gameDesc = conn.getResult().getString("description");
+                this.gameCategory = "empty";
+                this.gameType = "empty";
+                this.gamePrice = 404;
+                this.gameThumbnail = conn.getResult().getBinaryStream("thumbnail");
+                games.add(new Game(this.gameTitle, this.gameDesc, this.gameCategory, this.gameType, this.gamePrice, this.gameThumbnail));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error in SQL");
+        }
+        return games;
+    }
+
+    public void getDescImg() {
+        if (this.gameTableView.getSelectionModel().getSelectedItem() != null) {
+            gameDescriptionLabel.setText(gameTableView.getSelectionModel().getSelectedItem().getDescription());
+            gameThumbnailImage.setImage(new Image(gameTableView.getSelectionModel().getSelectedItem().getThumbnail()));
+        } else {
+            gameDescriptionLabel.setText("No game selected");
+        }
     }
 }

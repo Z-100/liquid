@@ -6,7 +6,7 @@ public class Conn {
 
     private ResultSet result;
 
-    public void query(String statement, int queryMode) { // TODO Make Query mode work
+    public void query(String statement, int queryMode) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(
@@ -15,9 +15,8 @@ public class Conn {
             Statement stmt = conn.createStatement();
 
             switch (queryMode) {
-                //    0 = SELECT, 1 = INSERT or UPDATE
-                case 0 -> this.result = stmt.executeQuery(statement);
-                case 1 -> stmt.executeUpdate(statement);
+                case 0 -> this.result = stmt.executeQuery(statement);   // SELECT
+                case 1 -> stmt.executeUpdate(statement);                // INSERT or UPDATE
             }
 
         } catch (Exception e) {
