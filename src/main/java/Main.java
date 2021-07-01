@@ -13,6 +13,4 @@ public class Main extends Application {
         Stages stages = new Stages(primaryStage);
         stages.loginpage();
     }
-
-
 }

@@ -2,17 +2,16 @@ package classes;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.image.Image;
 
 import java.io.InputStream;
 
 public class Game {
+
     private SimpleStringProperty title;
     private SimpleStringProperty description;
     private SimpleStringProperty category;
     private SimpleStringProperty type;
     private SimpleDoubleProperty price;
-//    private byte[] thumbnail;
     private InputStream thumbnail;
 
     public Game(String title, String description, String category, String type, double price, InputStream thumbnail) {
