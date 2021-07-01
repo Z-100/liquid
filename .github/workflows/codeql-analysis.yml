@@ -55,6 +55,8 @@ jobs:
       with:
          # The Java version to set up. Takes a whole or semver Java version. See examples of supported syntax in README file
          java-version: 15
+         distribution: 'adopt'
+         
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
     - name: Autobuild
