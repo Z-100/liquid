@@ -18,7 +18,6 @@ public class Conn {
                 case 0 -> this.result = stmt.executeQuery(statement);   // SELECT
                 case 1 -> stmt.executeUpdate(statement);                // INSERT or UPDATE
             }
-
         } catch (Exception e) {
             System.out.println(e);
         }

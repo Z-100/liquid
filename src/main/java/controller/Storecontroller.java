@@ -34,24 +34,6 @@ public class Storecontroller {
     @FXML
     private Slider maxpriceSlider;
     @FXML
-    private RadioButton windows;
-    @FXML
-    private RadioButton linux;
-    @FXML
-    private RadioButton macos;
-    @FXML
-    private CheckBox actionBox;
-    @FXML
-    private CheckBox horrorBox;
-    @FXML
-    private CheckBox indieBox;
-    @FXML
-    private CheckBox tripleaBox;
-    @FXML
-    private CheckBox doubleabox;
-    @FXML
-    private CheckBox aBox;
-    @FXML
     private Label displaynameLabelTop;
     @FXML
     private Button refreshBtn;
@@ -107,7 +89,7 @@ public class Storecontroller {
 
 
         // Filters for the store
-
+        /*TODO Time wasn't enough: Adding category feature later on*/
 
         os.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             RadioButton rad = (RadioButton) os.getSelectedToggle();
@@ -150,7 +132,7 @@ public class Storecontroller {
         gameTableView.setItems(getGames(25, "Windows"));
     }
 
-    public ObservableList<Game> getGames(int maxprice, String selectedos/*, String[] categories*/) {
+    public ObservableList<Game> getGames(int maxprice, String selectedos) {
         errorMsgLabel.setVisible(false);
         Conn conn = new Conn();
 
@@ -195,8 +177,8 @@ public class Storecontroller {
         String statement1 = String.format(
                 "SELECT tt_user_game.user_id, tt_user_game.game_id " +
                         "FROM tt_user_game " +
-                        "JOIN user ON user.id = tt_user_game.user_id " +
-                        "JOIN game ON game.id = tt_user_game.game_id " +
+                                "JOIN user ON user.id = tt_user_game.user_id " +
+                                "JOIN game ON game.id = tt_user_game.game_id " +
                         "WHERE user.username = '%s' AND game.title = '%s'",
                 UserSession.getUserName(), selectedGame
         );

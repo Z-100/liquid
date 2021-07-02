@@ -117,7 +117,7 @@
                   </VBox>
                   <VBox prefHeight="202.0" prefWidth="234.0" style="-fx-background-color: #1D1D1D;">
                      <children>
-                        <Label style="-fx-text-fill: #E2E2E2;" text="Label">
+                        <Label style="-fx-text-fill: #E2E2E2;" text="Categories">
                            <font>
                               <Font name="Bahnschrift" size="18.0" />
                            </font>

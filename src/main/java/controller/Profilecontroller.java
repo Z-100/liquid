@@ -41,8 +41,6 @@ public class Profilecontroller {
     String session_username = UserSession.getUserName();
     String session_displayname = UserSession.getDisplayName();
 
-    //TODO max characters pw + usrname
-
     public void init(Stage primaryStage) {
         Stages stages = new Stages(primaryStage);
 
@@ -96,8 +94,18 @@ public class Profilecontroller {
 
     private void changeDetails(String displayname, String password, String confirm, Stages stages) {
         Conn conn = new Conn();
-        String statement1 = String.format("SELECT password FROM user WHERE username = '%s'", session_username);
-        String statement2 = "UPDATE user SET displayname = '" + displayname + "', password = '" + password + "' WHERE username = '" + session_username + "'";
+        String statement1 = String.format(
+                "SELECT password " +
+                        "FROM user " +
+                "WHERE username = '%s'",
+                session_username
+        );
+        String statement2 = String.format(
+                "UPDATE user " +
+                        "SET displayname = '%s', password = '%s' " +
+                "WHERE username = '%s'",
+                displayname, password, session_username
+        );
 
         conn.query(statement1, 0);
         try {

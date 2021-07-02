@@ -12,7 +12,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 
 public class Logincontroller {
@@ -53,10 +52,6 @@ public class Logincontroller {
             }
         });
 
-//        loginBtn.setOnKeyPressed(keyEvent -> {
-//            KeyEvent //TODO On pressing enter
-//        });
-
         registerbtn.setOnMouseClicked(mouseEvent -> {
             Stages stages = new Stages(this.primaryStage);
             stages.registerpage();
@@ -67,7 +62,7 @@ public class Logincontroller {
         try {
             String statement = String.format(
                     "SELECT username, displayname, password " +
-                    "FROM user"
+                        "FROM user"
             );
 
             Conn conn = new Conn();
@@ -80,7 +75,6 @@ public class Logincontroller {
 
                 if (username.equals(usernameDB) && password.equals(passwordDB)) {
                     UserSession.getInstance(usernameDB, displayNameDB);
-
                     Stages stages = new Stages(this.primaryStage);
                     stages.storepage();
                 } else {

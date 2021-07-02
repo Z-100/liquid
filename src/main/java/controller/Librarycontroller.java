@@ -96,8 +96,8 @@ public class Librarycontroller {
         String statement1 = String.format(
                 "SELECT game.title, game.description, game.thumbnail " +
                 "FROM tt_user_game " +
-                    "JOIN user ON tt_user_game.user_id = user.id " +
-                    "JOIN game ON game.id = tt_user_game.game_id " +
+                        "JOIN user ON tt_user_game.user_id = user.id " +
+                        "JOIN game ON game.id = tt_user_game.game_id " +
                 "WHERE user.username = '%s'",
                 UserSession.getUserName()
         );
