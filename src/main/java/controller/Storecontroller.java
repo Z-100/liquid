@@ -4,27 +4,18 @@ import classes.Conn;
 import classes.Game;
 import classes.Stages;
 import classes.UserSession;
-import com.mysql.cj.xdevapi.Table;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import javax.imageio.ImageIO;
-import javax.security.auth.callback.Callback;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Blob;
 import java.sql.SQLException;
-import java.util.concurrent.RecursiveAction;
 
 public class Storecontroller {
 
@@ -68,6 +59,8 @@ public class Storecontroller {
     private Button buyBtn;
     @FXML
     private Label errorMsgLabel;
+    @FXML
+    private ToggleGroup os;
 
     private String gameTitle;
     private String gameDesc;
@@ -75,12 +68,15 @@ public class Storecontroller {
     private String gameType;
     private double gamePrice;
     private InputStream gameThumbnail;
+
     private Double maxprice = 25.0;
+    private String selectedos = "Windows";
 
     private String session_displayname = UserSession.getDisplayName();
 
     public void init(Stage primaryStage) {
 
+        // Change stages
         Stages stages = new Stages(primaryStage);
 
         storeBtn.setOnAction(actionEvent -> {
@@ -102,20 +98,25 @@ public class Storecontroller {
         displaynameLabelTop.setText(session_displayname);
 
         refreshBtn.setOnAction(actionEvent -> {
-            getGames(25);
+            getGames(25, "Windows");
         });
 
         buyBtn.setOnAction(actionEvent -> {
             buyGame();
         });
 
-        //TODO Categorys
 
-        //TODO OS
+        // Filters for the store
+
+
+        os.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            RadioButton rad = (RadioButton) os.getSelectedToggle();
+            selectedos = rad.getText();
+            gameTableView.setItems(getGames(maxprice.intValue(), selectedos));
+        });
 
         maxpriceSlider.setValue(25);
         maxpriceSlider.valueProperty().addListener(new ChangeListener<Number>() {
-
             @Override
             public void changed(
                     ObservableValue<? extends Number> observableValue,
@@ -126,12 +127,12 @@ public class Storecontroller {
                 maxprice = maxpriceSlider.getValue();
             }
         });
-
         maxpriceSlider.setOnMouseReleased(event -> {
-            gameTableView.setItems(getGames(maxprice.intValue()));
+            gameTableView.setItems(getGames(maxprice.intValue(), selectedos));
         });
 
 
+        // Table with games from DB
         TableColumn<Game, String> title = new TableColumn("Title");
         title.setCellValueFactory(new PropertyValueFactory<Game, String>("title"));
         title.prefWidthProperty().bind(gameTableView.widthProperty().multiply(0.7));
@@ -146,22 +147,24 @@ public class Storecontroller {
 
         title.setResizable(false);
         gameTableView.getColumns().addAll(title, price, thumbnail);
-        gameTableView.setItems(getGames(25));
+        gameTableView.setItems(getGames(25, "Windows"));
     }
 
-    public ObservableList<Game> getGames(int maxprice) {
+    public ObservableList<Game> getGames(int maxprice, String selectedos/*, String[] categories*/) {
         errorMsgLabel.setVisible(false);
         Conn conn = new Conn();
+
         String statement1 = String.format(
                 "SELECT game.id, game.title, game.description, game.price, game.thumbnail, category.category, os.type " +
                         "FROM game " +
-                        "JOIN tt_game_category ON game.id = tt_game_category.game_id " +
-                        "JOIN category ON tt_game_category.category_id = category.id " +
-                        "JOIN tt_game_os ON game.id = tt_game_category.game_id " +
-                        "JOIN os ON tt_game_os.os_id = os.id " +
+                                "JOIN tt_game_category ON game.id = tt_game_category.game_id " +
+                                "JOIN category ON tt_game_category.category_id = category.id " +
+                                "JOIN tt_game_os ON game.id = tt_game_os.game_id " +
+                                "JOIN os ON tt_game_os.os_id = os.id " +
                         "WHERE game.price < %s " +
+                            "AND os.type = '%s' " +
                         "GROUP BY title",
-                maxprice
+                maxprice, selectedos
         );
 
         conn.query(statement1, 0);

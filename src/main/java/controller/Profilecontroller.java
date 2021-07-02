@@ -6,7 +6,6 @@ import classes.UserSession;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
 import java.sql.SQLException;
 
 public class Profilecontroller {
@@ -42,6 +41,8 @@ public class Profilecontroller {
     String session_username = UserSession.getUserName();
     String session_displayname = UserSession.getDisplayName();
 
+    //TODO max characters pw + usrname
+
     public void init(Stage primaryStage) {
         Stages stages = new Stages(primaryStage);
 
@@ -64,6 +65,12 @@ public class Profilecontroller {
         usernameLabel.setText(session_username);
         displaynameLabel.setText(session_displayname);
         displaynameLabelTop.setText(session_displayname);
+
+        displaynameField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() == 26) {
+                displaynameField.setText(oldValue);
+            }
+        });
 
         editToggleBtn.setOnAction(actionEvent -> {
             if (editToggle == 0) {
@@ -89,8 +96,7 @@ public class Profilecontroller {
 
     private void changeDetails(String displayname, String password, String confirm, Stages stages) {
         Conn conn = new Conn();
-
-        String statement1 = "SELECT password FROM user WHERE username = '" + session_username + "'";
+        String statement1 = String.format("SELECT password FROM user WHERE username = '%s'", session_username);
         String statement2 = "UPDATE user SET displayname = '" + displayname + "', password = '" + password + "' WHERE username = '" + session_username + "'";
 
         conn.query(statement1, 0);
@@ -99,12 +105,15 @@ public class Profilecontroller {
                 if (confirm.equals(conn.getResult().getString("password"))) {
                     conn.query(statement2, 1);
                     System.out.println("Correct password");
+                    UserSession.setDisplayName(displayname);
+                    stages.profilepage();
+                } else {
+                    errorLabel.setText("Wrong (old) password");
                 }
             }
-            UserSession.setDisplayName(displayname);
-            stages.profilepage();
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("Error in SQL");
         }
     }
 

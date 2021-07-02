@@ -92,7 +92,7 @@
                   </VBox>
                   <VBox prefHeight="130.0" prefWidth="234.0" style="-fx-background-color: #1D1D1D;">
                      <children>
-                        <RadioButton mnemonicParsing="false" style="-fx-text-fill: #E2E2E2;" text="Windows">
+                        <RadioButton fx:id="windows" mnemonicParsing="false" style="-fx-text-fill: #E2E2E2;" text="Windows">
                            <toggleGroup>
                               <ToggleGroup fx:id="os" />
                            </toggleGroup>
@@ -100,12 +100,12 @@
                               <Font name="Bahnschrift" size="18.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" style="-fx-text-fill: #E2E2E2;" text="Linux" toggleGroup="$os">
+                        <RadioButton fx:id="linux" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" style="-fx-text-fill: #E2E2E2;" text="Linux" toggleGroup="$os">
                            <font>
                               <Font name="Bahnschrift" size="18.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton layoutX="10.0" layoutY="28.0" mnemonicParsing="false" style="-fx-text-fill: #E2E2E2;" text="MacOS" toggleGroup="$os">
+                        <RadioButton fx:id="macos" layoutX="10.0" layoutY="28.0" mnemonicParsing="false" style="-fx-text-fill: #E2E2E2;" text="MacOS" toggleGroup="$os">
                            <font>
                               <Font name="Bahnschrift" size="18.0" />
                            </font>

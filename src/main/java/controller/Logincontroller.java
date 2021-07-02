@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 
 public class Logincontroller {
@@ -48,13 +49,15 @@ public class Logincontroller {
             if (i > 5) this.primaryStage.setTitle(15 - i + " clicks away");
             if (i >= 15) {
                 easteregg.setVisible(true);
-                this.primaryStage.setTitle("Easteregg unlocked!");
+                this.primaryStage.setTitle("Easter egg unlocked!");
             }
         });
 
+//        loginBtn.setOnKeyPressed(keyEvent -> {
+//            KeyEvent //TODO On pressing enter
+//        });
+
         registerbtn.setOnMouseClicked(mouseEvent -> {
-
-
             Stages stages = new Stages(this.primaryStage);
             stages.registerpage();
         });
@@ -62,7 +65,10 @@ public class Logincontroller {
 
     private void logincheck(String username, String password) {
         try {
-            String statement = "SELECT username, displayname, password FROM user";
+            String statement = String.format(
+                    "SELECT username, displayname, password " +
+                    "FROM user"
+            );
 
             Conn conn = new Conn();
             conn.query(statement, 0);
@@ -84,6 +90,7 @@ public class Logincontroller {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("Error in SQL");
         }
     }
 }

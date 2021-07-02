@@ -4,9 +4,9 @@ import classes.Conn;
 import classes.Game;
 import classes.Stages;
 import classes.UserSession;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,11 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Blob;
 import java.sql.SQLException;
 
 public class Librarycontroller {
@@ -84,8 +80,8 @@ public class Librarycontroller {
         description.prefWidthProperty().bind(gameTableView.widthProperty().multiply(0));
 
         TableColumn<Game, byte[]> thumbnail = new TableColumn("Thumbnail");
-        description.setCellValueFactory(new PropertyValueFactory<>("thumbnail"));
-        description.prefWidthProperty().bind(gameTableView.widthProperty().multiply(0));
+        thumbnail.setCellValueFactory(new PropertyValueFactory<>("thumbnail"));
+        thumbnail.prefWidthProperty().bind(gameTableView.widthProperty().multiply(0));
 
         title.setResizable(false);
         gameTableView.getColumns().addAll(title, description, thumbnail);
@@ -98,7 +94,11 @@ public class Librarycontroller {
 
     public ObservableList<Game> getGames() {
         String statement1 = String.format(
-                "SELECT game.title, game.description, game.thumbnail FROM tt_user_game JOIN user ON tt_user_game.user_id = user.id JOIN game ON game.id = tt_user_game.game_id WHERE user.username = '%s'",
+                "SELECT game.title, game.description, game.thumbnail " +
+                "FROM tt_user_game " +
+                    "JOIN user ON tt_user_game.user_id = user.id " +
+                    "JOIN game ON game.id = tt_user_game.game_id " +
+                "WHERE user.username = '%s'",
                 UserSession.getUserName()
         );
 

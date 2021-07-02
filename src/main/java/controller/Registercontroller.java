@@ -51,8 +51,16 @@ public class Registercontroller {
 
     private void tokencheck(String username, String password, String token) {
         try {
-            String statement1 = "SELECT token FROM token";
-            String statement2 = "INSERT INTO user (username, displayname, password) VALUES ('" +username + "', '" +username + "', '" + password  + "')";
+            String statement1 = String.format(
+                    "SELECT token " +
+                    "FROM token"
+            );
+            String statement2 = String.format(
+                    "INSERT INTO user " +
+                        "(username, displayname, password) " +
+                        "VALUES ('%s', '%s', '%s')",
+                    username, username, password
+            );
 
             Conn conn = new Conn();
             conn.query(statement1, 0);
@@ -69,6 +77,7 @@ public class Registercontroller {
             }
         } catch(SQLException e) {
             e.printStackTrace();
+            System.out.println("Error in SQL");
         }
     }
 }
