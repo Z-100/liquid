@@ -43,6 +43,19 @@ public class Registercontroller {
             }
         });
 
+        // Limits characters to 26
+        usernameField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() == 26) {
+                usernameField.setText(oldValue);
+            }
+        });
+
+        passwordField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() == 26) {
+                passwordField.setText(oldValue);
+            }
+        });
+
         loginBtn.setOnMouseClicked(mouseEvent -> {
             Stages stages = new Stages(this.primaryStage);
             stages.loginpage();

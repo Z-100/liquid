@@ -64,12 +64,26 @@ public class Profilecontroller {
         displaynameLabel.setText(session_displayname);
         displaynameLabelTop.setText(session_displayname);
 
+        // Limits max characters to 26
         displaynameField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.length() == 26) {
                 displaynameField.setText(oldValue);
             }
         });
 
+        passwordField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() == 26) {
+                passwordField.setText(oldValue);
+            }
+        });
+
+        confirmField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() == 26) {
+                confirmField.setText(oldValue);
+            }
+        });
+
+        // Switches edit mode
         editToggleBtn.setOnAction(actionEvent -> {
             if (editToggle == 0) {
                 editToggle = 1;
@@ -79,6 +93,7 @@ public class Profilecontroller {
             toggle();
         });
 
+        // Submits form
         submitBtn.setOnAction(actionEvent -> {
             String displayname = displaynameField.getText();
             String password = passwordField.getText();
@@ -92,6 +107,7 @@ public class Profilecontroller {
         });
     }
 
+    // Function used to execute updates in database
     private void changeDetails(String displayname, String password, String confirm, Stages stages) {
         Conn conn = new Conn();
         String statement1 = String.format(
