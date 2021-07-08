@@ -3,6 +3,7 @@ package controller;
 import classes.Conn;
 import classes.Stages;
 import classes.UserSession;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -33,6 +34,7 @@ public class Logincontroller {
 
     private Stage primaryStage;
     private int i;
+    private int j = 0;
 
     public void init(Stage primaryStage) {
 
@@ -40,6 +42,9 @@ public class Logincontroller {
         usernameField.requestFocus();
 
         loginBtn.setOnAction(actionEvent -> {
+            this.j++;
+            if (this.j >= 5) Platform.exit();
+
             logincheck(usernameField.getText(), passwordField.getText());
         });
 

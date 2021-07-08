@@ -171,7 +171,6 @@ public class Storecontroller {
 
     public void buyGame() {
         Game selectedGame = gameTableView.getSelectionModel().getSelectedItem();
-        System.out.println(selectedGame.getTitle());
         Conn conn = new Conn();
 
         String statement1 = String.format(
@@ -180,7 +179,7 @@ public class Storecontroller {
                                 "JOIN user ON user.id = tt_user_game.user_id " +
                                 "JOIN game ON game.id = tt_user_game.game_id " +
                         "WHERE user.username = '%s' AND game.title = '%s'",
-                UserSession.getUserName(), selectedGame
+                UserSession.getUserName(), selectedGame.getTitle()
         );
         String statement2 = String.format(
                 "INSERT INTO tt_user_game (user_id, game_id)\n" +
@@ -188,15 +187,17 @@ public class Storecontroller {
                 UserSession.getUserName(), selectedGame.getTitle()
         );
 
-
         conn.query(statement1, 0);
         try {
+            int inDb = 0;
             while (conn.getResult().next()) {
+                inDb = 1;
                 errorMsgLabel.setVisible(true);
             }
+            if (inDb == 0) conn.query(statement2, 1);
         } catch (SQLException e) {
             System.out.println(e);
-            conn.query(statement2, 1);
+            System.out.println("game bought");
         }
     }
 }
